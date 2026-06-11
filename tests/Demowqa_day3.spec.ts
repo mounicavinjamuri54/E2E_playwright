@@ -8,6 +8,20 @@ test.describe('Demoqa_topics_day3', () => {
     });
     ///////////ALERTS
     // //simple, confirm, prompt
+    /************notes */
+    //page-->current browser tab, once-->listerner only one time,
+    //araysyn function(dialog)=>{}--->callback function
+    //1)page.once('dialog', async dialog=>{})--Register the listner
+   // 2)Alert opens 3)Playwright automatically executes  4)Alert closes
+   //once()--handles only 1st dialog
+   //on()--->handles every dialog
+
+   //What is page.once('dialog', async dialog => {})?
+
+//It registers a one-time event listener for a browser dialog. 
+// When an alert, confirm, or prompt appears, Playwright passes the dialog object to the callback function, 
+// where we can inspect the dialog message and either accept or dismiss it.
+
     test('Alerts , @alerts', async ({ page }) => {
 
         // page.on('close', () => {
