@@ -22,7 +22,7 @@ test.describe('Demoqa_topics_day3', () => {
 // When an alert, confirm, or prompt appears, Playwright passes the dialog object to the callback function, 
 // where we can inspect the dialog message and either accept or dismiss it.
 
-    test('Alerts , @alerts', async ({ page }) => {
+    test('Alerts , @alerts2', async ({ page }) => {
 
         // page.on('close', () => {
         //     console.log('PAGE CLOSED');
@@ -37,12 +37,11 @@ test.describe('Demoqa_topics_day3', () => {
         // await page.getByRole('listitem').filter({ hasText: 'Alerts' }).click();
         await expect(page.getByRole('heading', { name: 'Alerts' })).toBeVisible();
         //////approach1===============================================currently not working
-        const [dialog] = await Promise.all([
-            page.waitForEvent('dialog'),
-            page.locator('#alertButton').click()
-        ]);
-        console.log(dialog.message());
-        await dialog.accept();
+        // const [dialog] = await Promise.all([
+        //     page.waitForEvent('dialog'),
+        //     page.locator('#alertButton').click()
+        // ]);
+        // await dialog.accept();
 
         //////////approach 2
         await expect(page.getByText('Click Button to see alert ')).toBeVisible();

@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import { environment } from './config/environment'; //./ = the current folder where this file is located
 
 /**
  * Read environment variables from file.
@@ -13,6 +14,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
+  workers: 1,
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -29,13 +31,15 @@ export default defineConfig({
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    baseURL: environment.baseURL,
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video:'retain-on-failure',
     launchOptions :{
       slowMo : 1000
     },
-    baseURL: "https://demoqa.com/elements?utm_source=chatgpt.com"
+   // baseURL: "https://demoqa.com/elements?utm_source=chatgpt.com"
+   
   },
 
   /* Configure projects for major browsers */
@@ -66,14 +70,14 @@ export default defineConfig({
     // },
 
     /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
+    {
+      name: 'Microsoft Edge',
+      use: { ...devices['Desktop Edge'], channel: 'msedge' },
+    },
+    {
+      name: 'Google Chrome',
+      use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+    },
   ],
 
   /* Run your local dev server before starting the tests */

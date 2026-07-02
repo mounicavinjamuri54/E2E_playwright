@@ -31,7 +31,7 @@ await expect(page.locator('#output p')).toContainText([
 });
 //-----------------------------------------------------------------
 
-test('checkbox @checkbox', async({page})=>{
+test('checkbox, @checkbox', async({page})=>{
 
     await page.goto('https://demoqa.com/elements?utm_source=chatgpt.com');
 
