@@ -1,14 +1,15 @@
 import { Page, expect } from '@playwright/test';
+import { BasePage } from './BasePage';
 
-export class AlertPage {  ////export(Keyword) :-Now other files can use it 
+export class AlertPage extends BasePage{  ////export(Keyword) :-Now other files can use it 
     // export is a TypeScript/JavaScript keyword used to make a class, function, or variable available to other files..
 
-    constructor(private page: Page) { }
+   // constructor(private page: Page) { } calls this in BasePage
 
     //constructor runs automatically when object got created :-when ---> const alertsPage = new AlertsPage(page);
     //Playwright passes the browser tab(page):---into the constructor.
     // Now every method in the class can use:-----this.page
-    //why private:----Because only this class should access the page object.
+    //why private:----Because only this class should access the page object can make it as protected also can use child class(inherit concept)).
     //Without private, we must explicitly declare the variable and assign it inside the constructor to keep obj private
 
     async navigateToAlerts() {
