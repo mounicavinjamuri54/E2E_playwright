@@ -17,7 +17,7 @@ export class AlertPage extends BasePage{  ////export(Keyword) :-Now other files 
      
      
     async navigateToAlerts() {
-
+       
         await this.page.getByText('Alerts, Frame & Windows', { exact: true }).click();
         await this.page.getByRole('link', { name: 'Alerts', exact: true }).click();
         // await page.getByRole('listitem').filter({ hasText: 'Alerts' }).click();
@@ -28,7 +28,7 @@ export class AlertPage extends BasePage{  ////export(Keyword) :-Now other files 
         console.log(text);
         
         await expect(this.page.getByText('Click Button to see alert ')).toBeVisible();
-
+         await this.Screenshot('AlertPage');
     }
 
     async simpleAlertClick() {
