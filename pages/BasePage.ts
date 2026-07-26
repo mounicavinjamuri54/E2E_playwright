@@ -1,4 +1,6 @@
 import { Page, Locator } from '@playwright/test';
+import path from "path"; //path is a built-in Node.js module.  
+//sTARTING  we get error while importing path so for that we need to create tsconfig.json then restart TSscript Server  
 
 export class BasePage {
 
@@ -37,10 +39,21 @@ export class BasePage {
 
   async Screenshot(filename: string) {
     const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
-    this.page.screenshot({
+    await this.page.screenshot({
       path: `D:/Playwright/PWDemos/screenshots/${filename}_${timestamp}.png`,
       fullPage: true
     });
+  }
 
+  async uploadFile(locator: Locator, fileName : string): Promise<void>{ //uploadFile returns nothing
+
+    const filepath = path.join(
+      process.cwd(),
+      "test-data",
+      fileName
+    )
+   await locator.setInputFiles(filepath);
+    
+    
   }
 }

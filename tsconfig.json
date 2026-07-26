@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2020", //Convert TypeScript into JavaScript that runs on ECMAScript 2020.
+    "module": "commonjs", //TypeScript compiles it into JavaScript compatible with ES2020.
+    "moduleResolution": "node10",//Node.js uses a module system.
+    "ignoreDeprecations": "6.0",
+    "esModuleInterop": true, //may produce an error because path is a CommonJS module.
+    "skipLibCheck": true,//Don't type-check every library inside node_modules:It speeds up compilation.
+    "strict": false,//This relaxes TypeScript's type checking.
+    "types": ["node"] //It tells TypeScript:"Include all Node.js type definitions."
+  },
+  "include": ["**/*.ts"]
+}
+
+//Since my Playwright framework uses Node.js built-in modules such as path and process, 
+// I added "types": ["node"] so TypeScript can load the Node.js type definitions. 
+// This enables IntelliSense, proper type checking, and resolves errors like Cannot find module 'path' or 
+// Cannot find name 'process'.
